@@ -44,3 +44,28 @@ dnsf run simple.zone
 dig -p 8053 @127.0.0.1 matt.local A
 dig -p 8053 @127.0.0.1 workers.matt.local A
 ```
+
+### Local IPs
+
+You can create listenable IPs on Mac OS X (and probably Unix works too) by creating an alias for the loopback interface:
+
+```bash
+sudo ifconfig lo0 alias 12.0.0.1
+sudo ifconfig lo0 alias 12.0.0.2
+sudo ifconfig lo0 alias 12.0.0.3
+sudo ifconfig lo0 alias 12.0.0.4
+sudo ifconfig lo0 alias 12.0.0.5
+```
+
+You can then make you service listen on `12.0.0.X:<port>` and register multiple A records under a subdomain on your local zone file:
+
+```
+...
+workers            IN  A     12.0.0.1
+workers            IN  A     12.0.0.2
+workers            IN  A     12.0.0.3
+workers            IN  A     12.0.0.4
+workers            IN  A     12.0.0.5
+```
+
+Load balancer working with DNS name server will be able to spread the local through all those 5 addresses.
