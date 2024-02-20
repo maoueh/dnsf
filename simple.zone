@@ -1,0 +1,8 @@
+$ORIGIN matt.local.     ; designates the start of this zone file in the namespace
+$TTL 3600                ; default expiration time (in seconds) of all RRs without their own TTL value
+matt.local.  IN  SOA   ns.matt.local. username.matt.local. ( 2020091025 7200 3600 1209600 3600 )
+matt.local.  IN  NS    ns
+matt.local.  IN  A     127.0.0.1
+ns            IN  A     127.0.0.1
+workers            IN  A     12.0.0.2
+workers            IN  A     12.0.0.3
