@@ -34,5 +34,13 @@ go install github.com/maoueh/dnsf@latest
 ### Run
 
 ```bash
+# Listen on 8053 by default, pass port as second argument to change it
 dnsf run simple.zone
+```
+
+### Test
+
+```bash
+dig -p 8053 @127.0.0.1 matt.local A
+dig -p 8053 @127.0.0.1 workers.matt.local A
 ```
